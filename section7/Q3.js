@@ -1,21 +1,19 @@
 /**
- * Q3. 삽입정렬
- *
- * N개의 숫자가 입력되면 오름차순으로 정렬하여 출력.
- * 정렬하는 방법은 삽입정렬
+ * Q3. Special Sort
+ * N개의 정수가 입력되면 입력된 값을 정렬.
+ * 이때 음의 정수는 앞쪽에 양의정수는 뒷쪽에 있어야 한다.
+ * 또한 양의정수와 음의정수의 순서에는 변함이 없어야 한다.
  */
 
 function solution(arr) {
   let answer = arr;
-
   for (let i = 0; i < arr.length - 1; i++) {
-    let j = i;
-    while (arr[j] > arr[j + 1] && j >= 0) {
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      j--; // 이전 조건 한번 더 검사
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > 0 && arr[j + 1] < 0) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
     }
   }
-
   return answer;
 }
 
